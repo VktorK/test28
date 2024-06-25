@@ -2,11 +2,20 @@
 
 namespace App\Services\Admin;
 
+use App\Http\Filters\AbstractFilters;
+use App\Http\Requests\Admin\CarBrand\IndexRequest;
 use App\Models\CarBrand;
+
 
 class AdminCarBrandService
 {
-        public static function store(array $data)
+
+    public static function index(array $data)
+    {
+        return CarBrand::filter($data);
+    }
+
+    public static function store(array $data)
         {
             return CarBrand::create($data);
         }

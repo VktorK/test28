@@ -6,6 +6,12 @@ use App\Models\CarBrand;
 
 class UserCarBrandService
 {
+
+        public static function index(array $data)
+        {
+            return CarBrand::filterUser($data);
+        }
+
         public static function store(array $data)
         {
             return CarBrand::create($data);

@@ -17,13 +17,22 @@ class AdminCarController extends Controller
 {
 
 
+    /**
+     * @param IndexRequest $indexRequest
+     * @return array
+     */
     public function index(IndexRequest $indexRequest): array
     {
-//        $carBrand = UserCarBrandService::filter($indexRequest);
-        return AdminCarResource::collection(Car::all())->resolve();
+        $data = $indexRequest -> validated();
+        $carBrand = AdminCarService::index($data)->get();
+        return AdminCarResource::collection($carBrand)->resolve();
     }
 
 
+    /**
+     * @param StoreRequest $request
+     * @return array
+     */
     public function store(StoreRequest $request): array
     {
         $data = $request->validated();
@@ -32,12 +41,21 @@ class AdminCarController extends Controller
     }
 
 
+    /**
+     * @param Car $car
+     * @return array
+     */
     public function show(Car $car): array
     {
         return AdminCarResource::make($car)->resolve();
     }
 
 
+    /**
+     * @param UpdateRequest $request
+     * @param Car $car
+     * @return array
+     */
     public function update(UpdateRequest $request, Car $car): array
     {
         $data = $request->validated();
@@ -46,6 +64,10 @@ class AdminCarController extends Controller
     }
 
 
+    /**
+     * @param Car $car
+     * @return JsonResponse
+     */
     public function destroy(Car $car): JsonResponse
     {
         AdminCarService::destroy($car);

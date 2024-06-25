@@ -18,8 +18,9 @@ class UserCarBrandController extends Controller
 
     public function index(IndexRequest $indexRequest): array
     {
-//        $carBrand = UserCarBrandService::filter($indexRequest);
-        return UserCarBrandResource::collection(CarBrand::all())->resolve();
+        $data = $indexRequest -> validated();
+        $carBrand = UserCarBrandService::index($data)->get();
+        return UserCarBrandResource::collection($carBrand)->resolve();
     }
 
 

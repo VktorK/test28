@@ -16,7 +16,16 @@ class IndexRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'year_of_issue_from' => 'nullable|integer',
+            'year_of_issue_to' => 'nullable|integer',
+            'mileage_from' => 'nullable|integer',
+            'mileage_to' => 'nullable|integer',
+            'color' => 'nullable|string',
+            'car_brand_id' => 'nullable|integer',
+            'car_model_id' => 'nullable|integer',
+            'user_id' => 'nullable|integer',
+            'created_from' => 'nullable|date_format:Y-m-d H:i:s',
+            'created_to' => 'nullable|date_format:Y-m-d H:i:s',
         ];
     }
 }

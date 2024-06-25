@@ -6,6 +6,11 @@ use App\Models\CarModel;
 
 class AdminCarModelService
 {
+
+        public static function index(array $data)
+        {
+            return CarModel::filter($data);
+        }
         public static function store(array $data)
         {
             return CarModel::create($data);

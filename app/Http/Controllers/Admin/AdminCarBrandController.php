@@ -16,13 +16,22 @@ class AdminCarBrandController extends Controller
 {
 
 
+    /**
+     * @param IndexRequest $indexRequest
+     * @return array
+     */
     public function index(IndexRequest $indexRequest): array
     {
-//        $carBrand = UserCarBrandService::filter($indexRequest);
-        return AdminCarBrandResource::collection(CarBrand::all())->resolve();
+        $data = $indexRequest->validated();
+        $carBrand = AdminCarBrandService::index($data)->get();
+        return AdminCarBrandResource::collection($carBrand)->resolve();
     }
 
 
+    /**
+     * @param StoreRequest $request
+     * @return array
+     */
     public function store(StoreRequest $request): array
     {
         $data = $request->validated();
@@ -31,12 +40,21 @@ class AdminCarBrandController extends Controller
     }
 
 
+    /**
+     * @param CarBrand $carBrand
+     * @return array
+     */
     public function show(CarBrand $carBrand): array
     {
         return AdminCarBrandResource::make($carBrand)->resolve();
     }
 
 
+    /**
+     * @param UpdateRequest $request
+     * @param CarBrand $carBrand
+     * @return array
+     */
     public function update(UpdateRequest $request, CarBrand $carBrand): array
     {
         $data = $request->validated();
@@ -45,6 +63,10 @@ class AdminCarBrandController extends Controller
     }
 
 
+    /**
+     * @param CarBrand $carBrand
+     * @return JsonResponse
+     */
     public function destroy(CarBrand $carBrand): JsonResponse
     {
         AdminCarBrandService::destroy($carBrand);

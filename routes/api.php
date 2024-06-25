@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminCarBrandController;
 use App\Http\Controllers\Admin\AdminCarController;
 use App\Http\Controllers\Admin\AdminCarModelController;
+use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\User\UserCarBrandController;
 use App\Http\Controllers\User\UserCarController;
 use App\Http\Controllers\User\UserCarModelController;
@@ -55,6 +56,13 @@ Route::group(['prefix'=>'admin', 'middleware' => ['jwt.auth','is.admin']],functi
    Route::post('car-models', [AdminCarModelController::class, 'store']);
    Route::patch('car-models/{carModel}', [AdminCarModelController::class, 'update']);
    Route::delete('car-models/{carModel}', [AdminCarModelController::class, 'destroy']);
+
+
+    Route::get('users', [AdminUserController::class, 'index']);
+    Route::get('users/{user}', [AdminUserController::class, 'show']);
+    Route::post('users', [AdminUserController::class, 'store']);
+    Route::patch('users/{user}', [AdminUserController::class, 'update']);
+    Route::delete('users/{user}', [AdminUserController::class, 'destroy']);
 });
 
 Route::group(['prefix'=> 'user','middleware' => ['jwt.auth']],function (){
@@ -75,4 +83,7 @@ Route::group(['prefix'=> 'user','middleware' => ['jwt.auth']],function (){
     Route::post('car-models', [UserCarModelController::class, 'store']);
     Route::patch('car-models/{carModel}', [UserCarModelController::class, 'update']);
     Route::delete('car-models/{carModel}', [UserCarModelController::class, 'destroy']);
+
+    Route::patch('users',[UserAccountController::class, 'update']);
+    Route::delete('users',[UserAccountController::class, 'destroy']);
 });

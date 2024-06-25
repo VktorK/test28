@@ -22,6 +22,7 @@ class AdminCarResource extends JsonResource
             'car_brand_id' => $this-> car_brand_id,
             'car_model_id' => $this-> car_model_id,
             'user_id' => $this-> user_id,
+            'created_at' => $this -> created_at
         ];
     }
 }

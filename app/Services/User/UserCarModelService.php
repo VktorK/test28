@@ -6,18 +6,41 @@ use App\Models\CarModel;
 
 class UserCarModelService
 {
-        public static function store(array $data)
-        {
+
+    /**
+     * @param array $data
+     * @return mixed
+     */
+    public static function index(array $data): mixed
+    {
+        return Carmodel::filterUser($data);
+    }
+
+    /**
+     * @param array $data
+     * @return mixed
+     */
+    public static function store(array $data): mixed
+    {
             return CarModel::create($data);
         }
 
-        public static function update(CarModel $carModel, array $data): ?CarModel
+    /**
+     * @param CarModel $carModel
+     * @param array $data
+     * @return CarModel|null
+     */
+    public static function update(CarModel $carModel, array $data): ?CarModel
         {
             $carModel->update($data);
             return $carModel->fresh();
         }
 
-        public static function destroy(CarModel $carModel): ?bool
+    /**
+     * @param CarModel $carModel
+     * @return bool|null
+     */
+    public static function destroy(CarModel $carModel): ?bool
         {
             return $carModel->delete();
         }
