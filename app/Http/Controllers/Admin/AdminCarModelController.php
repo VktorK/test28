@@ -71,7 +71,7 @@ class AdminCarModelController extends Controller
     {
         AdminCarModelService::destroy($carModel);
         return response()->json([
-            'message' => 'Car Model deleted successfully'
+            'message' => 'Модель автомобиля удалена'
         ], ResponseAlias::HTTP_OK);
     }
 }

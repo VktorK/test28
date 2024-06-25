@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "My DOC API",
+        "title": "TEST28 DOC API",
         "version": "1.0.0"
     },
     "paths": {
@@ -1668,13 +1668,284 @@
                 ]
             }
         },
-        "/api/user/profiles": {
+        "/api/user/car-brands": {
             "get": {
                 "tags": [
-                    "Профиль"
+                    "Пользовательские функции (Взаимодействие с брендом автомобиля)"
                 ],
-                "summary": "Профиль текущего User",
-                "operationId": "71f675beb4d242986837e8162cb38b31",
+                "summary": "Список брэндов автомобилей",
+                "operationId": "c85eb8e392a04f9a008b2d82b1ff24e1",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Бренд",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "created_from",
+                        "in": "query",
+                        "description": "Дата создания с",
+                        "required": false,
+                        "schema": {
+                            "type": "date-time"
+                        }
+                    },
+                    {
+                        "name": "created_to",
+                        "in": "query",
+                        "description": "Дата создания до",
+                        "required": false,
+                        "schema": {
+                            "type": "date-time"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Porche"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "date-time",
+                                                        "example": "2010-10-22"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/user/cars": {
+            "get": {
+                "tags": [
+                    "Пользовательские функции (Данные автомобиля)"
+                ],
+                "summary": "Список Автомобилей авторизированного пользователя",
+                "operationId": "2f2f7ecdbad9239e4780f15015490f88",
+                "parameters": [
+                    {
+                        "name": "year_of_issue_from",
+                        "in": "query",
+                        "description": "Год Выпуска С",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "year_of_issue_from",
+                        "in": "query",
+                        "description": "Год Выпуска По",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "mileage_from",
+                        "in": "query",
+                        "description": "Пробег С",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "mileage_to",
+                        "in": "query",
+                        "description": "Пробег До",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "color",
+                        "in": "query",
+                        "description": "Цвет автомобиля",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "car_brand_id",
+                        "in": "query",
+                        "description": "id бренда автомобиля",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "car_model_id",
+                        "in": "query",
+                        "description": "id модели автомобиля",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "created_from",
+                        "in": "query",
+                        "description": "Дата создания с",
+                        "required": false,
+                        "schema": {
+                            "type": "date-time"
+                        }
+                    },
+                    {
+                        "name": "created_to",
+                        "in": "query",
+                        "description": "Дата создания до",
+                        "required": false,
+                        "schema": {
+                            "type": "date-time"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "year_of_issue": {
+                                                        "type": "integer",
+                                                        "example": 2010
+                                                    },
+                                                    "mileage": {
+                                                        "type": "integer",
+                                                        "example": 69000
+                                                    },
+                                                    "color": {
+                                                        "type": "string",
+                                                        "example": "red"
+                                                    },
+                                                    "car_brand_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "car_model_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "user_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "created_at": {
+                                                        "type": "date-time",
+                                                        "example": "2010-10-22"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Пользовательские функции (Данные автомобиля)"
+                ],
+                "summary": "Создание названия модели Автомобиля, автоматические прокидывает user_id",
+                "operationId": "5d69df57d928f509d9d5beff2b409c2c",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "year_of_issue": {
+                                                "type": "integer",
+                                                "example": 2010
+                                            },
+                                            "mileage": {
+                                                "type": "integer",
+                                                "example": 69000
+                                            },
+                                            "color": {
+                                                "type": "string",
+                                                "example": "red"
+                                            },
+                                            "car_brand_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "car_model_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "created_at": {
+                                                "type": "date-time",
+                                                "example": "2010-10-22"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "ok",
@@ -1686,31 +1957,147 @@
                                             "type": "integer",
                                             "example": 1
                                         },
-                                        "first_name": {
-                                            "type": "string",
-                                            "example": "Timmy"
+                                        "year_of_issue": {
+                                            "type": "integer",
+                                            "example": 2010
                                         },
-                                        "last_name": {
-                                            "type": "string",
-                                            "example": "Black"
+                                        "mileage": {
+                                            "type": "integer",
+                                            "example": 69000
                                         },
-                                        "date_of_birth": {
+                                        "color": {
                                             "type": "string",
-                                            "format": "date",
-                                            "example": null
+                                            "example": "red"
                                         },
-                                        "login": {
-                                            "type": "string",
-                                            "example": "Lok1"
+                                        "car_brand_id": {
+                                            "type": "integer",
+                                            "example": 1
                                         },
-                                        "balance": {
-                                            "type": "number",
-                                            "format": "float",
-                                            "example": 167.2
+                                        "car_model_id": {
+                                            "type": "integer",
+                                            "example": 1
                                         },
                                         "user_id": {
                                             "type": "integer",
                                             "example": 1
+                                        },
+                                        "created_at": {
+                                            "type": "date-time",
+                                            "example": "2010-10-22"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unautoruzed"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/user/cars/{car}": {
+            "get": {
+                "tags": [
+                    "Пользовательские функции (Данные автомобиля)"
+                ],
+                "summary": "Единичный Автомобиль авторизированного пользователя",
+                "operationId": "8bde2c0a0976f7d81678a8a5add3433b",
+                "parameters": [
+                    {
+                        "name": "car",
+                        "in": "path",
+                        "description": "id car",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "year_of_issue": {
+                                            "type": "integer",
+                                            "example": 2010
+                                        },
+                                        "mileage": {
+                                            "type": "integer",
+                                            "example": 69000
+                                        },
+                                        "color": {
+                                            "type": "string",
+                                            "example": "red"
+                                        },
+                                        "car_brand_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "car_model_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "user_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "created_at": {
+                                            "type": "date-time",
+                                            "example": "2010-10-22"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Пользовательские функции (Данные автомобиля)"
+                ],
+                "summary": "Удаление данных Автомобиля, принадлажащего авторизированному пользователю",
+                "operationId": "e38abd30e8c1e52e4004ae4d093c8bcf",
+                "parameters": [
+                    {
+                        "name": "car",
+                        "in": "path",
+                        "description": "id car",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Deleted"
                                         }
                                     },
                                     "type": "object"
@@ -1730,10 +2117,19 @@
             },
             "patch": {
                 "tags": [
-                    "Профиль"
+                    "Пользовательские функции (Данные автомобиля)"
                 ],
-                "summary": "Обновление профиля у User",
-                "operationId": "084f1de8bc082c118b5c206c6bbc7443",
+                "summary": "Обновление данных Автомобиля принадлажащего авторизированному пользователю",
+                "operationId": "436b6d8c9e01780e490e62613f40cfb0",
+                "parameters": [
+                    {
+                        "name": "car",
+                        "in": "path",
+                        "description": "id car",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -1741,29 +2137,23 @@
                                 "allOf": [
                                     {
                                         "properties": {
-                                            "first_name": {
+                                            "year_of_issue": {
+                                                "type": "integer",
+                                                "example": 2010
+                                            },
+                                            "mileage": {
+                                                "type": "integer",
+                                                "example": 69000
+                                            },
+                                            "color": {
                                                 "type": "string",
-                                                "example": "Timmy"
+                                                "example": "red"
                                             },
-                                            "last_name": {
-                                                "type": "string",
-                                                "example": "Black"
+                                            "car_brand_id": {
+                                                "type": "integer",
+                                                "example": 1
                                             },
-                                            "date_of_birth": {
-                                                "type": "string",
-                                                "format": "date",
-                                                "example": null
-                                            },
-                                            "login": {
-                                                "type": "string",
-                                                "example": "Lok1"
-                                            },
-                                            "balance": {
-                                                "type": "number",
-                                                "format": "float",
-                                                "example": 167.2
-                                            },
-                                            "user_id": {
+                                            "car_model_id": {
                                                 "type": "integer",
                                                 "example": 1
                                             }
@@ -1782,27 +2172,45 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "first_name": {
-                                            "type": "string",
-                                            "example": "Timmy"
-                                        },
-                                        "last_name": {
-                                            "type": "string",
-                                            "example": "Tamminsky"
-                                        },
-                                        "date_of_birth": {
-                                            "type": "string",
-                                            "format": "date",
-                                            "example": "12.12.2002"
-                                        },
-                                        "login": {
-                                            "type": "string",
-                                            "example": "Lok1"
-                                        },
-                                        "balance": {
-                                            "type": "number",
-                                            "format": "float",
-                                            "example": 12.1
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "year_of_issue": {
+                                                        "type": "integer",
+                                                        "example": 2010
+                                                    },
+                                                    "mileage": {
+                                                        "type": "integer",
+                                                        "example": 69000
+                                                    },
+                                                    "color": {
+                                                        "type": "string",
+                                                        "example": "red"
+                                                    },
+                                                    "car_brand_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "car_model_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "user_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "created_at": {
+                                                        "type": "date-time",
+                                                        "example": "2010-10-22"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
                                         }
                                     },
                                     "type": "object"
@@ -1821,58 +2229,98 @@
                 ]
             }
         },
-        "/api/user/transactions": {
-            "post": {
+        "/api/user/car-models": {
+            "get": {
                 "tags": [
-                    "Транзакции"
+                    "Пользовательские функции (Взаимодействие с моделью автомобиля)"
                 ],
-                "summary": "Создание транзакции",
-                "operationId": "a864ad0735fd71aa4e588151a00ced80",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "allOf": [
-                                    {
-                                        "properties": {
-                                            "amount": {
-                                                "type": "number",
-                                                "format": "float",
-                                                "example": 10.2
-                                            },
-                                            "currency": {
-                                                "type": "string",
-                                                "example": "Some currency"
-                                            },
-                                            "payment_system": {
-                                                "type": "string",
-                                                "example": "PayPall"
-                                            },
-                                            "type": {
-                                                "type": "integer",
-                                                "example": 100
-                                            },
-                                            "status": {
-                                                "type": "integer",
-                                                "example": 1
-                                            },
-                                            "user_id": {
-                                                "type": "integer",
-                                                "example": 1
-                                            }
-                                        },
-                                        "type": "object"
-                                    }
-                                ]
-                            }
+                "summary": "Список моделей автомобилей",
+                "operationId": "76adafdc7ea835b4f5bf6277179e1386",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Бренд",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "car_brand_id",
+                        "in": "query",
+                        "description": "id car_brand",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "created_from",
+                        "in": "query",
+                        "description": "Дата создания с",
+                        "required": false,
+                        "schema": {
+                            "type": "date"
+                        }
+                    },
+                    {
+                        "name": "created_to",
+                        "in": "query",
+                        "description": "Дата создания до",
+                        "required": false,
+                        "schema": {
+                            "type": "date"
                         }
                     }
-                },
+                ],
                 "responses": {
                     "200": {
-                        "description": "ok"
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Porche"
+                                                    },
+                                                    "car_brand_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2010-10-22"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         }
     },

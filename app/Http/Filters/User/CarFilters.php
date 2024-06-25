@@ -47,8 +47,9 @@ class CarFilters extends AbstractFilters
         $builder->where('car_model_id', "=" , $value);
     }
 
-    protected function userId(Builder $builder, $value): void
+    protected function userId(Builder $builder,$value): void
     {
+//        $value = auth()->id();
         $builder->where('user_id', "=" , $value);
     }
 

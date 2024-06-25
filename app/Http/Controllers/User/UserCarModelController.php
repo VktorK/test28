@@ -16,6 +16,10 @@ class UserCarModelController extends Controller
 {
 
 
+    /**
+     * @param IndexRequest $indexRequest
+     * @return array
+     */
     public function index(IndexRequest $indexRequest): array
     {
         $data = $indexRequest -> validated();
@@ -24,6 +28,10 @@ class UserCarModelController extends Controller
     }
 
 
+    /**
+     * @param StoreRequest $request
+     * @return array
+     */
     public function store(StoreRequest $request): array
     {
         $data = $request->validated();
@@ -32,12 +40,21 @@ class UserCarModelController extends Controller
     }
 
 
+    /**
+     * @param CarModel $carModel
+     * @return array
+     */
     public function show(CarModel $carModel): array
     {
         return UserCarModelResource::make($carModel)->resolve();
     }
 
 
+    /**
+     * @param UpdateRequest $request
+     * @param CarModel $carModel
+     * @return array
+     */
     public function update(UpdateRequest $request, CarModel $carModel): array
     {
         $data = $request->validated();
@@ -46,6 +63,10 @@ class UserCarModelController extends Controller
     }
 
 
+    /**
+     * @param CarModel $carModel
+     * @return JsonResponse
+     */
     public function destroy(CarModel $carModel): JsonResponse
     {
         UserCarModelService::destroy($carModel);

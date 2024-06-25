@@ -72,7 +72,7 @@ class AdminCarController extends Controller
     {
         AdminCarService::destroy($car);
         return response()->json([
-            'message' => 'Car deleted successfully'
+            'message' => 'Автомобиль удален'
         ], ResponseAlias::HTTP_OK);
     }
 

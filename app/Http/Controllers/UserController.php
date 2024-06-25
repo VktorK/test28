@@ -16,7 +16,6 @@ class UserController extends Controller
     public function store(UserStoreRequest $request): array
     {
         $data = $request->validationData();
-        $userId = auth()->id();
         $user = UserService::store($data);
         return UserStoreResource::make($user)->resolve();
     }

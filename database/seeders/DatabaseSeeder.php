@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Car;
 use App\Models\CarBrand;
 use App\Models\CarModel;
@@ -18,11 +17,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
-        CarBrand::factory(10)->create();
-        CarModel::factory(10)->create();
-        Car::factory(10)->create();
-
         Role::create([
             "title" => 'admin'
         ]);
@@ -31,11 +25,22 @@ class DatabaseSeeder extends Seeder
             "title" => 'user'
         ]);
 
+        User::withoutEvents(function () {
+                User::factory()->create([
+                'name' => 'Test User',
+                'email' => 'test@example.com',
+                'password' => Hash::make('123123123'),
+            ]);
+        });
 
-         User::factory()->create([
-             'name' => 'Test User',
-             'email' => '4you.19885@mail.ru',
-             'password' => Hash::make('123456'),
-         ]);
+        User::find(1)->roles()->sync([
+            'role_id' => 1,
+            'user_id' => 1,
+        ]);
+
+        User::factory(10)->create();
+        CarBrand::factory(10)->create();
+        CarModel::factory(10)->create();
+        Car::factory(10)->create();
     }
 }

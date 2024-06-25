@@ -45,6 +45,11 @@ class AdminUserController extends Controller
         return AdminUserResource::make($user)->resolve();
     }
 
+    /**
+     * @param AdminUserUpdateRequest $request
+     * @param User $user
+     * @return array
+     */
     public function update(AdminUserUpdateRequest $request, User $user): array
     {
         $data = $request->validated();
@@ -52,11 +57,15 @@ class AdminUserController extends Controller
         return AdminUserResource::make($user)->resolve();
     }
 
+    /**
+     * @param User $user
+     * @return JsonResponse
+     */
     public function destroy(User $user): JsonResponse
     {
         AdminUserService::destroy($user);
         return response()->json([
-           'message' => 'User deleted'
+           'message' => 'Пользователь удален'
         ], ResponseAlias::HTTP_OK);
     }
 

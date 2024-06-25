@@ -26,7 +26,7 @@ class UserGetTokenCommand extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): void
     {
         $user = $this->argument('user');
 

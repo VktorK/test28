@@ -29,7 +29,7 @@ class UserAccountController extends Controller
     {
         UserService::destroy();
         return response()->json([
-            'message' => 'Deleting OK'
+            'message' => 'Удалил сам себя'
         ], ResponseAlias::HTTP_OK);
     }
 }

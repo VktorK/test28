@@ -71,7 +71,7 @@ class AdminCarBrandController extends Controller
     {
         AdminCarBrandService::destroy($carBrand);
             return response()->json([
-                    'message' => 'Car brand deleted successfully'
+                    'message' => 'Брэнд Автомобиля удален'
                 ], ResponseAlias::HTTP_OK);
     }
 }

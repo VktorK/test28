@@ -2,6 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Car;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Console\Command;
 
 class GoCommand extends Command
@@ -11,7 +14,7 @@ class GoCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'app:go-command';
+    protected $signature = 'go';
 
     /**
      * The console command description.
@@ -23,8 +26,8 @@ class GoCommand extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(User $user)
     {
-        //
+
     }
 }
