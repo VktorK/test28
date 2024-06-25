@@ -22,4 +22,16 @@ class IndexRequest extends FormRequest
             'create_to'=> 'nullable|date_format:Y-m-d H:i:s'
         ];
     }
+
+    /**
+     * @return string[]
+     */
+    public function messages(): array
+    {
+        return [
+            'title.string' => 'Поле "title" должно быть типа строка',
+            'create_from.date' => 'Поле "create_from" должно быть типа date',
+            'create_to.date' => 'Поле "create_to" должно быть типа create_to',
+        ];
+    }
 }

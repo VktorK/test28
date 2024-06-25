@@ -21,4 +21,15 @@ class UpdateRequest extends FormRequest
             'car_brand_id' => 'nullable|integer|exists:car_brands,id',
         ];
     }
+
+    /**
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            'title.string'=> 'Поле "title" должно быть типа "Строка"',
+            'car_brand_id.integer'=> 'Поле "Идентификатор бренда автомобиля" должно быть целочисленным'
+        ];
+    }
 }

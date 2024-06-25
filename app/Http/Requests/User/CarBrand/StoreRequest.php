@@ -18,4 +18,16 @@ class StoreRequest extends FormRequest
             'title' => 'required|string|max:50',
         ];
     }
+
+    /**
+     * @return string[]
+     */
+    public function messages(): array
+    {
+        return [
+            'title.required' => 'Поле title обязательно к заполению',
+            'title.string' => 'Поле title должно быть типа "строка"',
+            'title.max' => 'Поле title не должно превышать 50 символов'
+        ];
+    }
 }

@@ -21,4 +21,16 @@ class UpdateRequest extends FormRequest
             'email'=> 'required|string|unique:users,email,' . auth()->id(),
         ];
     }
+
+    /**
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            'name.string' => 'Поле name должно быть типа "строка"',
+            'email.email' => 'Поле email должно быть типа "email"',
+            'email.required' => 'Поле email обязательно к заполению',
+        ];
+    }
 }

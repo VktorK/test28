@@ -20,4 +20,17 @@ class StoreRequest extends FormRequest
             'car_brand_id' => 'required|integer|exists:car_brands,id',
         ];
     }
+
+    /**
+     * @return string[]
+     */
+    public function messages(): array
+    {
+        return [
+            'title.required'=> 'Поле "title" обязательно к заполнению',
+            'car_brand_id.required'=> 'Поле "Идентификатор бренда автомобиля" обязательно к заполнению',
+            'title.string'=> 'Поле "title" должно быть типа "Строка"',
+            'car_brand_id.integer'=> 'Поле "Идентификатор бренда автомобиля" должно быть целочисленным',
+        ];
+    }
 }

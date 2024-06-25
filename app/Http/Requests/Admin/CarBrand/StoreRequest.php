@@ -17,7 +17,19 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string'
+            'title' => 'required|string|max:50'
+        ];
+    }
+
+    /**
+     * @return string[]
+     */
+    public function messages(): array
+    {
+        return [
+            'title.required' => 'Поле title обязательно к заполению',
+            'title.string' => 'Поле title должно быть типа "строка"',
+            'title.max' => 'Поле title не должно превышать 50 символов'
         ];
     }
 }

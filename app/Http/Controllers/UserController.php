@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\User\User\UserStoreRequest;
 use App\Http\Resources\UserStoreResource;
-use App\Services\UserService;
+use App\Services\User\UserService;
 
 
 class UserController extends Controller

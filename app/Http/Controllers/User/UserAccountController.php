@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\User\UpdateRequest;
 use App\Http\Resources\UserUpdateResource;
-use App\Services\UserService;
+use App\Services\User\UserService;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 

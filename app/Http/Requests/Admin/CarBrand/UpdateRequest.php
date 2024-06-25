@@ -16,7 +16,18 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'nullable|string'
+            'title' => 'nullable|string|max:50'
+        ];
+    }
+
+    /**
+     * @return string[]
+     */
+    public function messages(): array
+    {
+        return [
+            'title.string' => 'Поле "title" должно быть типа строка',
+            'title.max' => 'Поле title не должно превышать 50 символов'
         ];
     }
 }

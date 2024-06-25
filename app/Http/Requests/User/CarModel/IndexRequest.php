@@ -21,4 +21,17 @@ class IndexRequest extends FormRequest
             'created_to'=>'nullable|date_format:Y-m-d H:i:s'
         ];
     }
+
+    /**
+     * @return string[]
+     */
+    public function messages(): array
+    {
+        return [
+            'title.string'=> 'Поле "title" должно быть типа "Строка"',
+            'car_brand_id.integer'=> 'Поле "Идентификатор бренда автомобиля" должно быть целочисленным',
+            'create_from.date' => 'Поле "created_from" должно быть типа data',
+            'create_to.date' => 'Поле "created_to" должно быть типа data',
+        ];
+    }
 }
