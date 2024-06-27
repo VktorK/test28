@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\CarBrand;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,7 @@ class CarModelFactory extends Factory
     {
         return [
             'title' => $this->faker->name(),
-            'car_brand_id' => $this->faker->numberBetween(1, 10),
+            'car_brand_id' => intval(CarBrand::all()->random()->id),
         ];
     }
 }

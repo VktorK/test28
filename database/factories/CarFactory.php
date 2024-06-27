@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\CarBrand;
+use App\Models\CarModel;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,9 +23,9 @@ class CarFactory extends Factory
             'year_of_issue' => $this->faker->year(),
             'mileage' => $this->faker->numberBetween(500, 60000),
             'color' => $this->faker->colorName(),
-            'car_brand_id' => $this->faker-> numberBetween(1, 10),
-            'car_model_id' => $this->faker-> numberBetween(1, 10),
-            'user_id' => $this->faker-> numberBetween(1, 10),
+            'car_brand_id' => intval(CarBrand::all()->random()->id),
+            'car_model_id' => intval(CarModel::all()->random()->id),
+            'user_id' => intval(User::all()->random()->id),
 
 
 
